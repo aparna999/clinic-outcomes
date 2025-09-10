@@ -7,11 +7,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
   imports: [BrowserModule, AppRoutingModule, MatTabsModule],
-  providers: [provideAnimationsAsync()],
+  providers: [provideAnimationsAsync(), provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
