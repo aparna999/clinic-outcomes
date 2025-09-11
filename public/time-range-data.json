@@ -1,6 +1,13 @@
-
 [
-  { "name": "<70 mg/dL", "value": 12 },
-  { "name": "70–180 mg/dL", "value": 72 },
-  { "name": ">180 mg/dL", "value": 16 }
+  {
+    "name": "timeinrange",
+    "series": [
+      { "name": "40", "value": 2 },
+      { "name": "54", "value": 70 },
+      { "name": "70", "value": 82 },
+      { "name": "180", "value": 82 },
+      { "name": "240", "value": 15 },
+      { "name": "400", "value": 1 }
+    ]
+  }
 ]

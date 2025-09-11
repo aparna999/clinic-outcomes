@@ -1,67 +1,84 @@
-<div class="dashboard-container">
+<div class="dashboard">
   <h2>Clinic Outcomes</h2>
 
   <mat-tab-group>
     <mat-tab label="30 days">
-      <div class="dashboard-row">
-        <mat-card class="dashboard-card">
-          <mat-card-title>Time in Range </mat-card-title>
+      <p>
+        Showing 120 patients from last 30 days of available data from 09/01/2025
+        - 09/30/2025
+      </p>
+      <p>
+        Only patients with a minimum of 30days are included. Last updated on
+        09/06/2025 3:00 PM
+      </p>
+
+      <div class="dashboard__row">
+        <mat-card class="dashboard__card">
+          <mat-card-header>
+            <mat-card-title>Time in Range </mat-card-title>
+          </mat-card-header>
+
           <mat-card-content>
-            Hi 30
-            <ngx-charts-bar-vertical
-              [results]="timeRangeData$ | async"
-              [xAxis]="false"
-              [yAxis]="true"
-              [legend]="showLegend"
-              [legendTitle]="'mg/dL'"
-              [legendPosition]="legendPosition"
-              [showDataLabel]="showLabels"
-              [scheme]="colorScheme"
-            >
-            </ngx-charts-bar-vertical>
+            <div class="dashboard__chart">
+              <ngx-charts-bar-vertical-normalized
+                [results]="timeRangeData$ | async"
+                [xAxis]="false"
+                [yAxis]="false"
+                [legend]="showLegend"
+                [legendTitle]="'mg/dL'"
+                [legendPosition]="legendPosition"
+                [scheme]="colorScheme"
+              >
+              </ngx-charts-bar-vertical-normalized>
+            </div>
           </mat-card-content>
         </mat-card>
 
-        <mat-card class="dashboard-card">
-          <mat-card-title>Glucose Management Indicator (GMI)</mat-card-title>
+        <mat-card class="dashboard__card">
+          <mat-card-header>
+            <mat-card-title>Glucose Management Indicator (GMI)</mat-card-title>
+          </mat-card-header>
+
           <mat-card-content>
-            <ngx-charts-pie-chart
-              [view]="view"
-              [scheme]="colorScheme"
-              [results]="gmiData$ | async"
-              [gradient]="gradient"
-              [legend]="showLegend"
-              [legendTitle]="'GMI (%)'"
-              [legendPosition]="legendPosition"
-              [labels]="showLabels"
-              [doughnut]="isDoughnut"
-            >
-            </ngx-charts-pie-chart>
+            <div class="dashboard__chart">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="gmiData$ | async"
+                [gradient]="gradient"
+                [legend]="showLegend"
+                [legendTitle]="'GMI (%)'"
+                [legendPosition]="legendPosition"
+                [labels]="true"
+                [doughnut]="isDoughnut"
+              >
+              </ngx-charts-pie-chart>
+            </div>
           </mat-card-content>
         </mat-card>
       </div>
     </mat-tab>
     <mat-tab label="60 days">
-      <div class="dashboard-row">
-        <mat-card class="dashboard-card">
+      <div class="dashboard__row">
+        <mat-card class="dashboard__card">
           <mat-card-title>Time in Range </mat-card-title>
           <mat-card-content> Hi 60 </mat-card-content>
         </mat-card>
 
-        <mat-card class="dashboard-card">
+        <mat-card class="dashboard__card">
           <mat-card-title>Glucose Management Indicator (GMI)</mat-card-title>
           <mat-card-content> Hi 60 </mat-card-content>
         </mat-card>
       </div>
     </mat-tab>
     <mat-tab label="90 days">
-      <div class="dashboard-row">
-        <mat-card class="dashboard-card">
+      <div class="dashboard__row">
+        <mat-card class="dashboard__card">
           <mat-card-title>Time in Range </mat-card-title>
           <mat-card-content> Hi 90 </mat-card-content>
         </mat-card>
 
-        <mat-card class="dashboard-card">
+        <mat-card class="dashboard__card">
           <mat-card-title>Glucose Management Indicator (GMI)</mat-card-title>
           <mat-card-content> Hi 90 </mat-card-content>
         </mat-card>

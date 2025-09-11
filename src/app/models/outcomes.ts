@@ -8,7 +8,7 @@ export interface ClinicOutcomes {
 
 export interface TimeInRangeData {
   name: string;
-  value: number;
+  series: GMIData[];
 }
 export interface GMIData {
   name: string;

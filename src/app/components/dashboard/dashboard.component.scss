@@ -1,16 +1,27 @@
-.dashboard-container {
+.dashboard {
     padding : 16px;
-}
 
-.dashboard-row {
+
+&__row {
   display: flex;
-  gap: 20px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 20px;
+  gap: 20px;
 }
 
-.dashboard-card {
+&__card {
   flex: 1;
   min-width: 420px;
-  min-height: 420px;
+  min-height: 540px;
+}
+
+&__chart {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center if needed */
+  width: 100%;             /* take full card width */
+  max-width: 600px;        /* fixed max width */
+  height: 250px;           /* fixed height */
+  margin: 0 auto;          /* center in the card */
+}
 }
