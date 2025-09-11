@@ -7,11 +7,11 @@ export interface ClinicOutcomes {
 }
 
 export interface TimeInRangeData {
-  label: string;
+  name: string;
   value: number;
 }
 export interface GMIData {
-  label: string;
+  name: string;
   value: number;
 }
 export interface ClinicSummary {

@@ -1,5 +1,6 @@
+
 [
-  { "label": "In Range", "value": 72 },
-  { "label": "Above Range", "value": 18 },
-  { "label": "Below Range", "value": 10 }
+  { "name": "<70 mg/dL", "value": 12 },
+  { "name": "70–180 mg/dL", "value": 72 },
+  { "name": ">180 mg/dL", "value": 16 }
 ]

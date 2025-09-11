@@ -1,5 +1,5 @@
 [
-  { "label": "GMI: 6.5%", "value": 40 },
-  { "label": "GMI: 6.7%", "value": 30 },
-  { "label": "GMI: 6.8%", "value": 30 }
+  { "name": "GMI: 6.5%", "value": 40 },
+  { "name": "GMI: 6.7%", "value": 30 },
+  { "name": "GMI: 6.8%", "value": 30 }
 ]
