@@ -12,6 +12,7 @@ import { Color, LegendPosition, ScaleType } from '@swimlane/ngx-charts';
 export class DashboardComponent implements OnInit {
   timeRangeData$: Observable<TimeInRangeData[]> = of([]);
   gmiData$: Observable<GMIData[]> = of([]);
+  reportingPeriods = [30, 60, 90];
 
   view: [number, number] = [700, 400];
 
