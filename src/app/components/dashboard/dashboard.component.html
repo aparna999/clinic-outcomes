@@ -3,20 +3,29 @@
 
   <mat-tab-group>
     <mat-tab *ngFor="let period of reportingPeriods" [label]="period + ' Days'">
-      <p>
-        Showing 120 patients from last {{ period }} days of available data from
-        09/01/2025 - 09/30/2025
-      </p>
-      <p>
-        Only patients with a minimum of {{ period }} days are included. Last
-        updated on 09/06/2025 3:00 PM
-      </p>
+      <div class="dashboard__text">
+        <div>
+          <p>
+            Showing 120 patients from last {{ period }} days of available data
+            from 09/01/2025 - 09/30/2025
+          </p>
+          <p>
+            Only patients with a minimum of {{ period }} days are included. Last
+            updated on 09/06/2025 3:00 PM
+          </p>
+        </div>
+
+        <button mat-stroked-button>
+          <mat-icon class="dashboard__icon" fontIcon="print"></mat-icon>
+          Print
+        </button>
+      </div>
       <div class="dashboard__row">
         <mat-card class="dashboard__card">
           <mat-card-header class="dashboard__header">
             <mat-card-title> Time in Range </mat-card-title>
             <mat-icon
-              class="dashboard__icon"
+              class="dashboard__icon material-symbols-outlined"
               fontIcon="info"
               matTooltip="Based on standard of care ranges for Time in range"
               matTooltipPosition="below"

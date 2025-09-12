@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -24,6 +25,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NgxChartsModule,
     MatIconModule,
     MatTooltipModule,
+    MatButtonModule,
   ],
   providers: [provideAnimationsAsync(), provideHttpClient()],
   bootstrap: [AppComponent],
