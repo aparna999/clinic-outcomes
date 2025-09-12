@@ -26,11 +26,24 @@
     &__header {
       display : flex;
       justify-content: space-between;
+      color: #3B71CA;
+      font-weight: lighter;
     }
 
     &__text {
       display: flex;
       justify-content: space-between;
       padding-top: 16px;
+       font-weight: lighter;
     }
+
+    &__secondary-text {
+      font-style: italic;
+      font-size: 0.875rem; 
+      color: #555;  
+    }       
+}
+
+h2 {
+    font-weight: lighter;
 }
