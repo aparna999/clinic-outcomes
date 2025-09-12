@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
-import { provideHttpClient } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -20,6 +22,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatTabsModule,
     MatCardModule,
     NgxChartsModule,
+    MatIconModule,
+    MatTooltipModule,
   ],
   providers: [provideAnimationsAsync(), provideHttpClient()],
   bootstrap: [AppComponent],

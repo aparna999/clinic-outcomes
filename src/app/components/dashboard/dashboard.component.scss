@@ -1,27 +1,30 @@
 .dashboard {
     padding : 16px;
 
+    &__row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap:20px;
+    }
 
-&__row {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 20px;
-  gap: 20px;
-}
+    &__card {
+      min-width: 480px;
+      min-height: 580px;
+    }
 
-&__card {
-  flex: 1;
-  min-width: 420px;
-  min-height: 540px;
-}
+    &__chart {
+      display: flex;
+      justify-content: center; 
+      align-items: center;     
+    }
 
-&__chart {
-  display: flex;
-  justify-content: center; 
-  align-items: center;     
-  width: 100%;             
-  max-width: 600px;        
-  height: 250px;           
-  margin: 0 auto;
-}
+    &__icon {
+      color: #3B71CA;
+    }
+
+    &__header {
+      display : flex;
+      justify-content: space-between;
+    }
 }
