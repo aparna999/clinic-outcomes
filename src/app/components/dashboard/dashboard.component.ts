@@ -3,6 +3,9 @@ import { ClinicOutcomesService } from '../../services/clinic-outcomes.service';
 import { GMIData, TimeInRangeData } from '../../models/outcomes';
 import { Observable, of } from 'rxjs';
 import { Color, LegendPosition, ScaleType } from '@swimlane/ngx-charts';
+import { Store } from '@ngrx/store';
+import { State } from '../../state/dashboard.reducer';
+import * as DashboardActions from '../../state/dasboard.actions';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,10 +34,19 @@ export class DashboardComponent implements OnInit {
   };
 
   private readonly clinicOutcomeService = inject(ClinicOutcomesService);
+  dashboard$: Observable<State> = of();
+
+  constructor(private store: Store<State>) {}
 
   ngOnInit() {
+    this.store.dispatch(DashboardActions.DashboardActions.loadDashboardData());
+
     this.timeRangeData$ = this.clinicOutcomeService.getTimeInRange();
 
     this.gmiData$ = this.clinicOutcomeService.getGMI();
+  }
+
+  onPrint(): void {
+    this.dashboard$ = this.store.select((state: any) => state.dashboard);
   }
 }

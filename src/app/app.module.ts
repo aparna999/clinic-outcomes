@@ -14,7 +14,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { StoreModule } from '@ngrx/store';
+
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideEffects } from '@ngrx/effects';
+import { dashboardReducer } from './state/dashboard.reducer';
+import { DashboardEffects } from './state/dashboard.effects';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -27,9 +32,14 @@ import { StoreModule } from '@ngrx/store';
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
-    StoreModule.forRoot({}, {}),
   ],
-  providers: [provideAnimationsAsync(), provideHttpClient()],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient(),
+    provideStore({ dashboard: dashboardReducer }),
+    provideStoreDevtools({ maxAge: 25, logOnly: false }),
+    provideEffects(DashboardEffects),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
