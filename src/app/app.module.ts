@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -26,6 +27,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [provideAnimationsAsync(), provideHttpClient()],
   bootstrap: [AppComponent],
