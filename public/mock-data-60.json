@@ -1,0 +1,27 @@
+{
+  "period": 60,
+  "timeInRangeData": [
+    {
+      "name": "timeinrange",
+      "series": [
+        { "name": "35", "value": 4 },
+        { "name": "66", "value": 80 },
+        { "name": "80", "value": 92 },
+        { "name": "160", "value": 92 },
+        { "name": "200", "value": 11 },
+        { "name": "300", "value": 3 }
+      ]
+    }
+  ],
+  "gmiData": [
+    { "name": "<=5%", "value": 6 },
+    { "name": "5-6%", "value": 32 },
+    { "name": ">=6%", "value": 55 }
+  ],
+  "activePatients": 80,
+  "dateRange": {
+    "start": "08/01/2025",
+    "end": "09/30/2025"
+  },
+  "lastUpdated": "09/11/2025 1:00 PM"
+}

@@ -13,8 +13,8 @@ export class DashboardEffects {
   loadDashboardData$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(DashboardActions.loadDashboardData),
-      switchMap(() =>
-        this.clinicService.getTimeInRange().pipe(
+      switchMap(({ period }) =>
+        this.clinicService.getClinicOutcomes(period).pipe(
           map((data) => DashboardActions.loadDashboardDataSuccess({ data })),
           catchError((error) =>
             of(DashboardActions.loadDashboardDataFailure({ error }))

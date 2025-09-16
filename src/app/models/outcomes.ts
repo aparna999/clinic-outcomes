@@ -1,8 +1,9 @@
 export interface ClinicOutcomes {
-  timeInRangeData: { label: string; value: number }[];
-  gmiData: { date: string; gmi: number }[];
+  period: Period;
+  timeInRangeData: TimeInRangeData[];
+  gmiData: GMIData[];
   activePatients: number;
-  dateRange: { start: string; end: string };
+  dateRange: DateRange;
   lastUpdated: string;
 }
 
@@ -13,12 +14,19 @@ export interface TimeInRangeData {
     value: number;
   };
 }
+
 export interface GMIData {
   name: string;
   value: number;
 }
-export interface ClinicSummary {
-  activePatients: number;
-  dateRange: { start: string; end: string };
-  lastUpdated: string;
+
+export interface DateRange {
+  start: string;
+  end: string;
+}
+
+export enum Period {
+  ThirtyDays = 30,
+  SixtyDays = 60,
+  NinetyDays = 90,
 }

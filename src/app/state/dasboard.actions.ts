@@ -4,14 +4,14 @@ import {
   emptyProps,
   props,
 } from '@ngrx/store';
-import { TimeInRangeData } from '../models/outcomes';
+import { ClinicOutcomes } from '../models/outcomes';
 
 export const DashboardActions = createActionGroup({
   source: 'Dashboard',
   events: {
-    'Load Dashboard Data': emptyProps(),
-    'Load Dashboard Data Success': props<{ data: TimeInRangeData[] }>(),
-    'Load Dashboard Data Failure': props<{ error: unknown }>(),
+    'Load Dashboard Data': props<{ period: number }>(),
+    'Load Dashboard Data Success': props<{ data: ClinicOutcomes }>(),
+    'Load Dashboard Data Failure': props<{ error: string }>(),
   },
 });
 

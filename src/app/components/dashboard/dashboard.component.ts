@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ClinicOutcomesService } from '../../services/clinic-outcomes.service';
-import { GMIData, TimeInRangeData } from '../../models/outcomes';
+import { ClinicOutcomes, Period } from '../../models/outcomes';
 import { Observable, of } from 'rxjs';
 import { Color, LegendPosition, ScaleType } from '@swimlane/ngx-charts';
 import { Store } from '@ngrx/store';
 import { State } from '../../state/dashboard.reducer';
-import * as DashboardActions from '../../state/dasboard.actions';
+import { DashboardActions } from '../../state/dasboard.actions';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +14,11 @@ import * as DashboardActions from '../../state/dasboard.actions';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
-  timeRangeData$: Observable<TimeInRangeData[]> = of([]);
-  gmiData$: Observable<GMIData[]> = of([]);
-  reportingPeriods = [30, 60, 90];
+  reportingPeriods: Period[] = [
+    Period.ThirtyDays,
+    Period.SixtyDays,
+    Period.NinetyDays,
+  ];
 
   view: [number, number] = [700, 400];
 
@@ -34,19 +37,25 @@ export class DashboardComponent implements OnInit {
   };
 
   private readonly clinicOutcomeService = inject(ClinicOutcomesService);
-  dashboard$: Observable<State> = of();
+  data$: Observable<ClinicOutcomes> = of();
+  loading$: Observable<boolean> = of(false);
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<{ dashboard: State }>) {}
 
   ngOnInit() {
-    this.store.dispatch(DashboardActions.DashboardActions.loadDashboardData());
+    this.data$ = this.store.select((state) => state.dashboard.data);
+    this.loading$ = this.store.select((state) => state.dashboard.loading);
 
-    this.timeRangeData$ = this.clinicOutcomeService.getTimeInRange();
+    const period = Period.ThirtyDays;
+    this.store.dispatch(DashboardActions.loadDashboardData({ period }));
+  }
 
-    this.gmiData$ = this.clinicOutcomeService.getGMI();
+  onTabChanged(event: MatTabChangeEvent) {
+    const period = this.reportingPeriods[event.index];
+    this.store.dispatch(DashboardActions.loadDashboardData({ period }));
   }
 
   onPrint(): void {
-    this.dashboard$ = this.store.select((state: any) => state.dashboard);
+    // this.data$ = this.store.select((state: any) => state.dashboard);
   }
 }

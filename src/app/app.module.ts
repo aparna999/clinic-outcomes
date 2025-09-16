@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -32,6 +33,7 @@ import { DashboardEffects } from './state/dashboard.effects';
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     provideAnimationsAsync(),
