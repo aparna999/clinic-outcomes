@@ -2,7 +2,7 @@
   "period": 60,
   "timeInRangeData": [
     {
-      "name": "timeinrange",
+      "name": "Time in range",
       "series": [
         { "name": "35", "value": 4 },
         { "name": "66", "value": 80 },
