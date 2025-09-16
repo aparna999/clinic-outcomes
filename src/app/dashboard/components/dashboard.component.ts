@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
     Period.NinetyDays,
   ];
 
-  view: [number, number] = [700, 400];
-
   // options
   gradient = true;
   showLegend = true;

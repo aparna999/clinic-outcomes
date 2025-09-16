@@ -44,6 +44,7 @@
 
               <mat-card-content class="dashboard__chart">
                 <ngx-charts-bar-vertical-normalized
+                  [view]="[220, 300]"
                   [results]="data.timeInRangeData"
                   [xAxis]="false"
                   [yAxis]="false"
@@ -65,7 +66,7 @@
 
               <mat-card-content class="dashboard__chart">
                 <ngx-charts-pie-chart
-                  [view]="view"
+                  [view]="[400, 300]"
                   [scheme]="colorScheme"
                   [results]="data.gmiData"
                   [gradient]="gradient"
