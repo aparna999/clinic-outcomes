@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { DashboardActions } from '../state/dasboard.actions';
+import { DashboardActions } from './dasboard.actions';
 import { ClinicOutcomesService } from '../services/clinic-outcomes.service';
 import { of } from 'rxjs';
 

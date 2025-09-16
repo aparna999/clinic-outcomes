@@ -1,11 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ClinicOutcomesService } from '../../services/clinic-outcomes.service';
-import { ClinicOutcomes, Period } from '../../models/outcomes';
+import { ClinicOutcomesService } from '../services/clinic-outcomes.service';
+import { ClinicOutcomes, Period } from '../models/outcomes';
 import { Observable, of } from 'rxjs';
 import { Color, LegendPosition, ScaleType } from '@swimlane/ngx-charts';
 import { Store } from '@ngrx/store';
-import { State } from '../../state/dashboard.reducer';
-import { DashboardActions } from '../../state/dasboard.actions';
+import { State } from '../state/dashboard.reducer';
+import { DashboardActions } from '../state/dasboard.actions';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({

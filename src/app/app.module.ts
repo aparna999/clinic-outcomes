@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/components/dashboard.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
@@ -19,8 +19,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
-import { dashboardReducer } from './state/dashboard.reducer';
-import { DashboardEffects } from './state/dashboard.effects';
+import { dashboardReducer } from './dashboard/state/dashboard.reducer';
+import { DashboardEffects } from './dashboard/state/dashboard.effects';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],

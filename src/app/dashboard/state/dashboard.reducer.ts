@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { DashboardActions } from '../state/dasboard.actions';
+import { DashboardActions } from './dasboard.actions';
 import { ClinicOutcomes, Period } from '../models/outcomes';
 
 export interface State {
