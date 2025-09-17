@@ -1,12 +1,16 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+
 import { ClinicOutcomesService } from '../services/clinic-outcomes.service';
 import { ClinicOutcomes, Period } from '../models/outcomes';
+
 import { Observable, of } from 'rxjs';
+
 import { Color, LegendPosition, ScaleType } from '@swimlane/ngx-charts';
+
 import { Store } from '@ngrx/store';
-import { State } from '../state/dashboard.reducer';
 import { DashboardActions } from '../state/dasboard.actions';
-import { MatTabChangeEvent } from '@angular/material/tabs';
+import { selectDashboardData, selectDashboardLoading } from '../state';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,11 +42,11 @@ export class DashboardComponent implements OnInit {
   data$: Observable<ClinicOutcomes> = of();
   loading$: Observable<boolean> = of(false);
 
-  constructor(private store: Store<{ dashboard: State }>) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
-    this.data$ = this.store.select((state) => state.dashboard.data);
-    this.loading$ = this.store.select((state) => state.dashboard.loading);
+    this.data$ = this.store.select(selectDashboardData);
+    this.loading$ = this.store.select(selectDashboardLoading);
 
     const period = Period.ThirtyDays;
     this.store.dispatch(DashboardActions.loadDashboardData({ period }));
@@ -54,6 +58,6 @@ export class DashboardComponent implements OnInit {
   }
 
   onPrint(): void {
-    // this.data$ = this.store.select((state: any) => state.dashboard);
+    // use this.data$ for print
   }
 }
