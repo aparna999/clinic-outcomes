@@ -2,86 +2,82 @@
   <h2>Clinic Outcomes</h2>
 
   <mat-tab-group (selectedTabChange)="onTabChanged($event)">
-    <mat-tab *ngFor="let period of reportingPeriods" [label]="period + ' Days'">
-      <ng-container *ngIf="loading$ | async; else renderContent">
-        <mat-spinner></mat-spinner>
-      </ng-container>
+    @for (period of reportingPeriods; track period) {
+    <mat-tab [label]="period + ' Days'">
+      @if (loading$ | async) {
+      <mat-spinner></mat-spinner>
+      } @else { @let data = (data$ | async); @if (data) {
+      <!--The sub text inside the tab -->
+      <div class="dashboard__text">
+        <div>
+          <p>
+            Showing {{ data.activePatients }} patients from last
+            {{ period }} days of available data from
+            {{ data.dateRange.start }} - {{ data.dateRange.end }}
+          </p>
+          <p class="dashboard__secondary-text">
+            Only patients with a minimum of {{ period }} days are included. Last
+            updated on {{ data.lastUpdated }}
+          </p>
+        </div>
 
-      <ng-template #renderContent>
-        <ng-container *ngIf="data$ | async as data">
-          <!--The sub text inside the tab -->
-          <div class="dashboard__text">
-            <div>
-              <p>
-                Showing {{ data.activePatients }} patients from last
-                {{ period }} days of available data from
-                {{ data.dateRange.start }} - {{ data.dateRange.end }}
-              </p>
-              <p class="dashboard__secondary-text">
-                Only patients with a minimum of {{ period }} days are included.
-                Last updated on {{ data.lastUpdated }}
-              </p>
-            </div>
+        <button mat-stroked-button (click)="onPrint()">
+          <mat-icon class="dashboard__icon" fontIcon="print"></mat-icon>
+          Print
+        </button>
+      </div>
 
-            <button mat-stroked-button (click)="onPrint()">
-              <mat-icon class="dashboard__icon" fontIcon="print"></mat-icon>
-              Print
-            </button>
-          </div>
+      <!--The cards with charts-->
+      <div class="dashboard__row">
+        <mat-card class="dashboard__card">
+          <mat-card-header class="dashboard__header">
+            <mat-card-title> Time in Range </mat-card-title>
+            <mat-icon
+              class="dashboard__icon material-symbols-outlined"
+              fontIcon="info"
+              matTooltip="Based on standard of care ranges for Time in range"
+              matTooltipPosition="below"
+            ></mat-icon>
+          </mat-card-header>
 
-          <!--The cards with charts-->
-          <div class="dashboard__row">
-            <mat-card class="dashboard__card">
-              <mat-card-header class="dashboard__header">
-                <mat-card-title> Time in Range </mat-card-title>
-                <mat-icon
-                  class="dashboard__icon material-symbols-outlined"
-                  fontIcon="info"
-                  matTooltip="Based on standard of care ranges for Time in range"
-                  matTooltipPosition="below"
-                ></mat-icon>
-              </mat-card-header>
+          <mat-card-content class="dashboard__chart">
+            <ngx-charts-bar-vertical-normalized
+              [view]="[220, 300]"
+              [results]="data.timeInRangeData"
+              [xAxis]="false"
+              [yAxis]="false"
+              [legend]="showLegend"
+              legendTitle="'mg/dL'"
+              [legendPosition]="legendPosition"
+              [scheme]="colorScheme"
+            >
+            </ngx-charts-bar-vertical-normalized>
+          </mat-card-content>
+        </mat-card>
 
-              <mat-card-content class="dashboard__chart">
-                <ngx-charts-bar-vertical-normalized
-                  [view]="[220, 300]"
-                  [results]="data.timeInRangeData"
-                  [xAxis]="false"
-                  [yAxis]="false"
-                  [legend]="showLegend"
-                  legendTitle="'mg/dL'"
-                  [legendPosition]="legendPosition"
-                  [scheme]="colorScheme"
-                >
-                </ngx-charts-bar-vertical-normalized>
-              </mat-card-content>
-            </mat-card>
+        <mat-card class="dashboard__card">
+          <mat-card-header class="dashboard__header">
+            <mat-card-title>Glucose Management Indicator (GMI)</mat-card-title>
+          </mat-card-header>
 
-            <mat-card class="dashboard__card">
-              <mat-card-header class="dashboard__header">
-                <mat-card-title
-                  >Glucose Management Indicator (GMI)</mat-card-title
-                >
-              </mat-card-header>
-
-              <mat-card-content class="dashboard__chart">
-                <ngx-charts-pie-chart
-                  [view]="[400, 300]"
-                  [scheme]="colorScheme"
-                  [results]="data.gmiData"
-                  [gradient]="gradient"
-                  [legend]="showLegend"
-                  legendTitle="'GMI (%)'"
-                  [legendPosition]="legendPosition"
-                  [labels]="true"
-                  [doughnut]="isDoughnut"
-                >
-                </ngx-charts-pie-chart>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </ng-container>
-      </ng-template>
+          <mat-card-content class="dashboard__chart">
+            <ngx-charts-pie-chart
+              [view]="[400, 300]"
+              [scheme]="colorScheme"
+              [results]="data.gmiData"
+              [gradient]="gradient"
+              [legend]="showLegend"
+              legendTitle="'GMI (%)'"
+              [legendPosition]="legendPosition"
+              [labels]="true"
+              [doughnut]="isDoughnut"
+            >
+            </ngx-charts-pie-chart>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      } }
     </mat-tab>
+    }
   </mat-tab-group>
 </div>
